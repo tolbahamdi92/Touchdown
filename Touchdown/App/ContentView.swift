@@ -11,12 +11,29 @@ struct ContentView: View {
     
     //MARK: - Body
     var body: some View {
-        VStack {
-            Spacer()
+        VStack(spacing: 0) {
+            CustomNavigationBarView()
+                .padding([.horizontal, .bottom])
+                .background(Color.white)
+                .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 5)
             
-            FooterView()
+            
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 0) {
+                    SliderImagesView()
+                        .frame(height: 280)
+                    
+                    FooterView()
+                        .padding(.horizontal)
+                    
+                }
+            }//: ScrollView
+            
+            
+        }//: VStack
+        .background {
+            backgroundColor.ignoresSafeArea()
         }
-        .padding()
     }
 }
 
